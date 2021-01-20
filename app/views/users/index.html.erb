@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+
+        <%= render partial: 'layouts/side', locals: {user: @user, newbook: @newbook } %>
+
+            <div class="col-md-8 offset-md-1">
+                <h1>Users</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>image</th>
+                            <th>name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <% @users.each do |user| %>
+                        <tbody>
+                            <tr>
+                                <td><%= attachment_image_tag user, :profile_image, :fill, 30,30, format: 'jpeg', fallback: "no_image.jpg", size: '30x30' %></td>
+                                <td><%= user.name %></td>
+                                <td><%= link_to("Show","/users/#{user.id}") %></td>
+                            </tr>
+                        </tbody>
+                    <% end %>
+                </table>
+            </div>
+    </div>
+</div>
